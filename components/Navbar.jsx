@@ -44,7 +44,7 @@ const Navbar = () => {
             </div>
             <nav className={`flex space-x-6 ${navbar ? 'max-md:block' : 'max-md:hidden'}`}>
                 {NAV_ITEMS.map((item, idx) => {
-                    return <Link key={idx} to={item.page} activeClass="active" spy={true} smooth={true} offset={-100} duration={500}>{item.label}</Link>
+                    return <Link key={idx} to={item.page} activeClass="active" spy={true} smooth={true} offset={-150} duration={500}>{item.label}</Link>
                 })}
             </nav>
             <nav className={`flex space-x-2 items-center justify-center ${navbar ? 'max-md:block' : 'max-md:hidden'}`}>
