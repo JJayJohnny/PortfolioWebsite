@@ -1,0 +1,49 @@
+"use client"
+import { useState } from "react"
+import { useRouter } from "next/navigation"
+
+export default function addProject(){
+    const [title, setTitle] = useState("")
+    const [description, setDescription] = useState("")
+    const [image, setImage] = useState("")
+    const [github, setGithub] = useState("")
+    const [website, setWebsite] = useState("")
+
+    const router = useRouter()
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        try{
+            const res = await fetch('http://localhost:3000/api/projects', {
+                method: "POST",
+                headers: {
+                    "Content-type": "application/json"
+                },
+                body: JSON.stringify({title, description, image, github, website})
+            })
+            if(res.ok){
+                router.push('/')
+            }
+            else{
+                throw new Error("Error creating project")
+            }
+        }
+        catch(error){
+            console.log(error)
+        }
+    }
+
+    return (
+        <div className="mt-40 w-1/2 mx-auto border p-5">
+            <h2 className="text-center font-bold">Add project</h2>
+            <form className="flex flex-col space-y-3" onSubmit={handleSubmit}>
+                <input type="text" placeholder="Title" className="border rounded" required onChange={(e) => setTitle(e.target.value)}/>
+                <input type="text" placeholder="Description" className="border rounded" required onChange={(e) => setDescription(e.target.value)}/>
+                <input type="file" placeholder="Photo" className="border rounded" required onChange={(e) => setImage(e.target.value)}/>
+                <input type="text" placeholder="Github page" className="border rounded" onChange={(e) => setGithub(e.target.value)}/>
+                <input type="text" placeholder="Hosted project page" className="border rounded" onChange={(e) => setWebsite(e.target.value)}/>
+                <input type="submit" value={"Add"} className="bg-green-500 rounded"/>
+            </form>
+        </div>
+    )
+}
