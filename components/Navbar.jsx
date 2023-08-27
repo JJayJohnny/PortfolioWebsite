@@ -4,6 +4,7 @@ import {Link} from "react-scroll/modules"
 import {useTheme} from "next-themes"
 import {RiMoonFill, RiSunLine} from "react-icons/ri"
 import {IoMdMenu, IoMdClose} from "react-icons/io"
+import {DiGithubBadge} from "react-icons/di"
 
 const NAV_ITEMS = [
     {
@@ -48,7 +49,7 @@ const Navbar = () => {
                 })}
             </nav>
             <nav className={`flex space-x-2 items-center justify-center ${navbar ? 'max-md:block' : 'max-md:hidden'}`}>
-                <a target={"_blank"} href="github.com">GH</a>
+                <a target={"_blank"} href="https://github.com/JJayJohnny"><DiGithubBadge size={28}/></a>
                 {currentTheme === "dark" ? (
                     <button onClick={() => setTheme('light')} className="bg-slate-100 p-2 rounded-xl">
                         <RiSunLine color="black"/>

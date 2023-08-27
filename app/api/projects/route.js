@@ -33,7 +33,11 @@ export async function DELETE(request){
     await connectMogoDB()
     const project = await Project.findById(id)
     if(project){
+        try{
         await unlink('public'+project.imagePath)
+        }catch(error){
+            console.log("Error deleting image: "+ error)
+        }
         await Project.findByIdAndDelete(id)
         return NextResponse.json({message: "Project deleted"}, {status: 200})
     }

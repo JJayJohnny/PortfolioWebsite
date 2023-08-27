@@ -1,6 +1,8 @@
 import React from "react";
 import Image from "next/image";
 import DeleteButton from "./DeleteButton";
+import {DiGithubBadge} from "react-icons/di"
+import {CgWebsite} from "react-icons/cg"
 
 const ProjectCard = ({project}) => {
     return(
@@ -10,8 +12,8 @@ const ProjectCard = ({project}) => {
                 <h3 className="font-semibold text-xl">{project.title}</h3>
                 <p>{project.description}</p>
                 <div className="flex flex-row justify-start space-x-2">
-                    <a href='/' target="_blank">{project.github}</a>
-                    <a href='/' target="_blank">{project.website}</a>
+                    {project.github ? <a href={project.github} target="_blank"><DiGithubBadge size={28}/></a> : null }
+                    {project.website ? <a href={project.website} target="_blank"><CgWebsite size={28}/></a> : null }
                     <DeleteButton id={project._id}/>
                 </div>
             </div>          

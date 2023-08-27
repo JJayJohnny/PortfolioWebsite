@@ -23,7 +23,7 @@ const DeleteButton = ({id}) => {
 
     return(
         <button className="text-red-400" onClick={deleteProject}>
-            <HiOutlineTrash/>
+            <HiOutlineTrash size={28}/>
         </button>
     )
 }
