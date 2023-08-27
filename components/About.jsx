@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import ArrowButtton from "./ArrowButton";
 
 const SKILLS = ['JavaScript', 'Python', 'C++', 'HTML', 'CSS', 'Node.js', 'Git', 'Next.js', 'Matlab', 'Numpy', 'Windows', 'Linux']
 
@@ -28,6 +29,7 @@ const About = () => {
                     </div>
                 </div>
             </div>
+            <ArrowButtton destination={'projects'}/>
         </section>
     )
 }
