@@ -1,7 +1,7 @@
 import connectMogoDB from "@/libs/mongodb"
 import Project from "@/models/project"
 import { NextResponse, NextRequest } from "next/server"
-import {writeFile} from 'fs/promises'
+import {writeFile, unlink} from 'fs/promises'
 
 export async function POST(request){
     // const {title, description, image, github, website} = await request.json()
@@ -31,6 +31,13 @@ export async function GET(){
 export async function DELETE(request){
     const id = request.nextUrl.searchParams.get("id")
     await connectMogoDB()
-    await Project.findByIdAndDelete(id)
-    return NextResponse.json({message: "Project deleted"}, {status: 200})
+    const project = await Project.findById(id)
+    if(project){
+        await unlink('public'+project.imagePath)
+        await Project.findByIdAndDelete(id)
+        return NextResponse.json({message: "Project deleted"}, {status: 200})
+    }
+    else{
+        return NextResponse.json({message: "No project with this id"})
+    }
 }

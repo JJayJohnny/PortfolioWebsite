@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import DeleteButton from "./DeleteButton";
 
 const ProjectCard = ({project}) => {
     return(
@@ -11,6 +12,7 @@ const ProjectCard = ({project}) => {
                 <div className="flex flex-row justify-start space-x-2">
                     <a href='/' target="_blank">{project.github}</a>
                     <a href='/' target="_blank">{project.website}</a>
+                    <DeleteButton id={project._id}/>
                 </div>
             </div>          
         </div>

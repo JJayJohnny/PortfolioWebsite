@@ -43,7 +43,7 @@ export default function addProject(){
             <form className="flex flex-col space-y-3" onSubmit={handleSubmit}>
                 <input type="text" placeholder="Title" className="border rounded" required onChange={(e) => setTitle(e.target.value)}/>
                 <input type="text" placeholder="Description" className="border rounded" required onChange={(e) => setDescription(e.target.value)}/>
-                <input type="file" placeholder="Photo" className="border rounded" required onChange={() => setImage(inputRef.current.files[0])} ref={inputRef}/>
+                <input type="file" placeholder="Photo" className="border rounded" required onChange={() => setImage(inputRef.current.files[0])} ref={inputRef} accept="image/*"/>
                 <input type="text" placeholder="Github page" className="border rounded" onChange={(e) => setGithub(e.target.value)}/>
                 <input type="text" placeholder="Hosted project page" className="border rounded" onChange={(e) => setWebsite(e.target.value)}/>
                 <input type="submit" value={"Add"} className="bg-green-500 rounded"/>
