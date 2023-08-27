@@ -1,12 +1,24 @@
 import connectMogoDB from "@/libs/mongodb"
 import Project from "@/models/project"
-import { NextResponse } from "next/server"
+import { NextResponse, NextRequest } from "next/server"
+import {writeFile} from 'fs/promises'
 
 export async function POST(request){
-    console.log(request)
-    const {title, description, image, github, website} = await request.json()
+    // const {title, description, image, github, website} = await request.json()
+    const data = await request.formData()
+    const title = data.get('title')
+    const description = data.get('description')
+    const image = data.get('image')
+    const github = data.get('github')
+    const website = data.get('website')
+
+    const bytes = await image.arrayBuffer()
+    const buffer = Buffer.from(bytes)
+    const imagePath = '/projectImages/' + image.name
+    await writeFile('public'+imagePath, buffer)
+
     await connectMogoDB()
-    await Project.create({title, description, image, github, website})
+    await Project.create({title, description, imagePath, github, website})
     return NextResponse.json({message: "Project Added"}, {status: 201})
 }
 

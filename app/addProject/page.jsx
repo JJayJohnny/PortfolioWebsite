@@ -1,5 +1,5 @@
 "use client"
-import { useState } from "react"
+import { useRef, useState } from "react"
 import { useRouter } from "next/navigation"
 
 export default function addProject(){
@@ -9,17 +9,21 @@ export default function addProject(){
     const [github, setGithub] = useState("")
     const [website, setWebsite] = useState("")
 
+    const inputRef = useRef()
     const router = useRouter()
 
     const handleSubmit = async (e) => {
         e.preventDefault()
         try{
+            const data = new FormData()
+            data.set('title', title)
+            data.set('description', description)
+            data.set('image', image)
+            data.set('github', github)
+            data.set('website', website)
             const res = await fetch('http://localhost:3000/api/projects', {
                 method: "POST",
-                headers: {
-                    "Content-type": "application/json"
-                },
-                body: JSON.stringify({title, description, image, github, website})
+                body: data
             })
             if(res.ok){
                 router.push('/')
@@ -39,7 +43,7 @@ export default function addProject(){
             <form className="flex flex-col space-y-3" onSubmit={handleSubmit}>
                 <input type="text" placeholder="Title" className="border rounded" required onChange={(e) => setTitle(e.target.value)}/>
                 <input type="text" placeholder="Description" className="border rounded" required onChange={(e) => setDescription(e.target.value)}/>
-                <input type="file" placeholder="Photo" className="border rounded" required onChange={(e) => setImage(e.target.value)}/>
+                <input type="file" placeholder="Photo" className="border rounded" required onChange={() => setImage(inputRef.current.files[0])} ref={inputRef}/>
                 <input type="text" placeholder="Github page" className="border rounded" onChange={(e) => setGithub(e.target.value)}/>
                 <input type="text" placeholder="Hosted project page" className="border rounded" onChange={(e) => setWebsite(e.target.value)}/>
                 <input type="submit" value={"Add"} className="bg-green-500 rounded"/>

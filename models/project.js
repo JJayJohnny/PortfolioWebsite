@@ -9,7 +9,7 @@ const projectSchema = new Schema({
         type: String,
         required: true
     },
-    image: {
+    imagePath: {
         type: String
     },
     github: {
