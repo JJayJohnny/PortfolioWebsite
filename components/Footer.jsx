@@ -5,14 +5,14 @@ const Footer = () => {
     const { data: session } = useSession()
 
     return (
-        <footer className="text-center w-full border-t-2 mt-auto">
+        <footer className="text-center w-full mt-auto dark:bg-black shadow-inner">
             <p>
                 Copyright &copy; 2023, Jan Barczewski
             </p>
                 <>
                     {session ? (
                         <div>
-                            Signed in as <a href="/adminPanel" className=" text-green-500">{session.user.name}</a> <button className=" font-bold underline" onClick={signOut}>Sign out</button>
+                            Signed in as <a href="/adminPanel" className=" text-green-500">{session.user.name}</a> <button className=" font-bold underline" onClick={() => {signOut({callbackUrl: '/'})}}>Sign out</button>
                         </div>
                     ) : (
                         <div>

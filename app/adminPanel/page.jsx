@@ -12,8 +12,9 @@ export default function adminPanel(){
 
     if(session){
         return(
-            <div className='my-40 mx-auto text-center'>
-                <button onClick={addProject}>Add new project</button>
+            <div className='my-40 mx-auto text-center flex flex-col space-y-3 w-48'>
+                <h1 className=' font-bold text-3xl'>Admin panel</h1>
+                <button onClick={addProject} className='bg-slate-100 dark:bg-slate-700 p-2 rounded-xl'>Add new project</button>
             </div>
         )
     }
