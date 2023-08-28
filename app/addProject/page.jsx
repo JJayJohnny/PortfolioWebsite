@@ -43,7 +43,7 @@ export default function addProject(){
     return (
         <>
             {session ? (
-                <div className="mt-40 w-1/2 mx-auto border p-5">
+                <div className="my-40 w-1/2 mx-auto border p-5">
                     <h2 className="text-center font-bold">Add project</h2>
                     <form className="flex flex-col space-y-3" onSubmit={handleSubmit}>
                         <input type="text" placeholder="Title" className="border rounded" required onChange={(e) => setTitle(e.target.value)}/>
@@ -55,7 +55,7 @@ export default function addProject(){
                     </form>
                 </div>
             ) : (
-                <div className="mt-40 mx-auto text-center">
+                <div className="my-40 mx-auto text-center">
                     <p>You are not permitted to view this page</p>
                     <button onClick={signIn}>Sign in</button>
                 </div>
