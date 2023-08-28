@@ -1,8 +1,11 @@
 "use client"
 import { useRef, useState } from "react"
 import { useRouter } from "next/navigation"
+import { signIn, useSession } from "next-auth/react"
 
 export default function addProject(){
+    const {data: session} = useSession()
+
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
     const [image, setImage] = useState("")
@@ -38,16 +41,25 @@ export default function addProject(){
     }
 
     return (
-        <div className="mt-40 w-1/2 mx-auto border p-5">
-            <h2 className="text-center font-bold">Add project</h2>
-            <form className="flex flex-col space-y-3" onSubmit={handleSubmit}>
-                <input type="text" placeholder="Title" className="border rounded" required onChange={(e) => setTitle(e.target.value)}/>
-                <input type="text" placeholder="Description" className="border rounded" required onChange={(e) => setDescription(e.target.value)}/>
-                <input type="file" placeholder="Photo" className="border rounded" required onChange={() => setImage(inputRef.current.files[0])} ref={inputRef} accept="image/*"/>
-                <input type="text" placeholder="Github page" className="border rounded" onChange={(e) => setGithub(e.target.value)}/>
-                <input type="text" placeholder="Hosted project page" className="border rounded" onChange={(e) => setWebsite(e.target.value)}/>
-                <input type="submit" value={"Add"} className="bg-green-500 rounded"/>
-            </form>
-        </div>
+        <>
+            {session ? (
+                <div className="mt-40 w-1/2 mx-auto border p-5">
+                    <h2 className="text-center font-bold">Add project</h2>
+                    <form className="flex flex-col space-y-3" onSubmit={handleSubmit}>
+                        <input type="text" placeholder="Title" className="border rounded" required onChange={(e) => setTitle(e.target.value)}/>
+                        <input type="text" placeholder="Description" className="border rounded" required onChange={(e) => setDescription(e.target.value)}/>
+                        <input type="file" placeholder="Photo" className="border rounded" required onChange={() => setImage(inputRef.current.files[0])} ref={inputRef} accept="image/*"/>
+                        <input type="text" placeholder="Github page" className="border rounded" onChange={(e) => setGithub(e.target.value)}/>
+                        <input type="text" placeholder="Hosted project page" className="border rounded" onChange={(e) => setWebsite(e.target.value)}/>
+                        <input type="submit" value={"Add"} className="bg-green-500 rounded"/>
+                    </form>
+                </div>
+            ) : (
+                <div className="mt-40 mx-auto text-center">
+                    <p>You are not permitted to view this page</p>
+                    <button onClick={signIn}>Sign in</button>
+                </div>
+            )}
+        </>
     )
 }
