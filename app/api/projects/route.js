@@ -2,8 +2,14 @@ import connectMogoDB from "@/libs/mongodb"
 import Project from "@/models/project"
 import { NextResponse, NextRequest } from "next/server"
 import {writeFile, unlink} from 'fs/promises'
+import { getServerSession } from "next-auth/next"
+import { authOptions } from "@/app/api/auth/[...nextauth]/route.js"
 
 export async function POST(request){
+    const session = await getServerSession(authOptions)
+    if(!session){
+        return NextResponse.json({message: "You dont have access"}, {status: 401})
+    }
     // const {title, description, image, github, website} = await request.json()
     const data = await request.formData()
     const title = data.get('title')
@@ -29,6 +35,10 @@ export async function GET(){
 }
 
 export async function DELETE(request){
+    const session = await getServerSession(authOptions)
+    if(!session){
+        return NextResponse.json({message: "You dont have access"}, {status: 401})
+    }
     const id = request.nextUrl.searchParams.get("id")
     await connectMogoDB()
     const project = await Project.findById(id)
