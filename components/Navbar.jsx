@@ -44,11 +44,14 @@ const Navbar = () => {
             </div>
             <nav className={`flex space-x-6 ${navbar ? 'max-md:block' : 'max-md:hidden'}`}>
                 {NAV_ITEMS.map((item, idx) => {
-                    return <Link key={idx} to={item.page} activeClass="active" spy={true} smooth={true} offset={-150} duration={500} className="cursor-pointer">{item.label}</Link>
+                    return <Link key={idx} to={item.page} activeClass="active" spy={true} smooth={true} offset={-150} duration={500} className="cursor-pointer group relative" onClick={() => setNavbar(!navbar)}>
+                        {item.label}
+                        <hr className="mx-auto left-0 w-0 h-0.5 bg-green-600 border-0 group-hover:w-full transition-all duration-300 absolute"></hr>
+                    </Link>
                 })}
             </nav>
             <nav className={`flex flex-row space-x-4 align-middle ${navbar ? 'max-md:block' : 'max-md:hidden'}`}>
-                <a target={"_blank"} href="https://github.com/JJayJohnny" className="inline-block align-bottom"><IoLogoGithub size={28}/></a>
+                <a target={"_blank"} href="https://github.com/JJayJohnny" className="inline-block align-bottom" onClick={() => setNavbar(!navbar)}><IoLogoGithub size={28}/></a>
                 {currentTheme === "dark" ? (
                     <button onClick={() => setTheme('light')} className="bg-slate-100 p-2 rounded-xl">
                         <RiSunLine color="black"/>

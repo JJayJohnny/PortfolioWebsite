@@ -36,7 +36,7 @@ export default async function Projects() {
         console.log(error)
         return (
             <section id="projects" className="my-60">
-                {error}
+                <div className="mx-auto text-center">Error loading projects</div>
             </section>
         )
     }
