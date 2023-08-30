@@ -2,9 +2,9 @@
 import React, {useState, useEffect} from "react"
 import {Link as ReactLink} from "react-scroll/modules"
 import {useTheme} from "next-themes"
-import {RiMoonFill, RiSunLine} from "react-icons/ri"
 import {IoMdMenu, IoMdClose, IoLogoGithub} from "react-icons/io"
 import {motion} from 'framer-motion'
+import ThemeSwitcher from "./ThemeSwitcher"
 
 const variants = {
     open: { opacity: 1, y: 0 },
@@ -31,7 +31,7 @@ const NAV_ITEMS = [
 const Navbar = () => {
     const [navbar, setNavbar] = useState(true)
     const [mounted, setMounted] = useState(false)
-    const {systemTheme, theme, setTheme} = useTheme()
+    const {systemTheme, theme} = useTheme()
     const currentTheme = theme === "system" ? systemTheme : theme
     const [width, setWidth] = useState(0)
 
@@ -69,16 +69,8 @@ const Navbar = () => {
                 })}
             </motion.nav>
             <motion.nav className={`flex flex-row space-x-4 ${navbar ? 'max-md:block' : 'max-md:hidden'}`} animate={navbar || width > phoneWidthBreakpoint ? "open" : "closed"} variants={variants} initial="closed">
-                <button className="align-bottom"><a target={"_blank"} href="https://github.com/JJayJohnny" rel="noopener noreferrer" onClick={() => setNavbar(!navbar)}><IoLogoGithub size={32}/></a></button>
-                {currentTheme === "dark" ? (
-                    <button onClick={() => setTheme('light')} className="bg-slate-100 p-2 rounded-xl">
-                        <RiSunLine color="black"/>
-                    </button>
-                ) : (
-                    <button onClick={() => setTheme('dark')} className="bg-slate-100 p-2 rounded-xl">
-                        <RiMoonFill/>
-                    </button>
-                )}
+                <motion.button className="align-bottom" whileHover={{y: "-10%"}}><a target={"_blank"} href="https://github.com/JJayJohnny" rel="noopener noreferrer" onClick={() => setNavbar(!navbar)}><IoLogoGithub size={32}/></a></motion.button>
+                <ThemeSwitcher/>
             </motion.nav>
         </header>
     )
