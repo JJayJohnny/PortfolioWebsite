@@ -1,6 +1,6 @@
 "use client"
 import React, {useState, useEffect} from "react"
-import {Link} from "react-scroll/modules"
+import {Link as ReactLink} from "react-scroll/modules"
 import {useTheme} from "next-themes"
 import {RiMoonFill, RiSunLine} from "react-icons/ri"
 import {IoMdMenu, IoMdClose, IoLogoGithub} from "react-icons/io"
@@ -44,14 +44,14 @@ const Navbar = () => {
             </div>
             <nav className={`flex space-x-6 ${navbar ? 'max-md:block' : 'max-md:hidden'}`}>
                 {NAV_ITEMS.map((item, idx) => {
-                    return <Link key={idx} to={item.page} activeClass="active" spy={true} smooth={true} offset={-150} duration={500} className="cursor-pointer group relative" onClick={() => setNavbar(!navbar)}>
+                    return <ReactLink key={idx} to={item.page} activeClass="active" spy={true} smooth={true} offset={-150} duration={500} className="cursor-pointer group relative" onClick={() => setNavbar(!navbar)}>
                         {item.label}
                         <hr className="mx-auto left-0 w-0 h-0.5 bg-green-600 border-0 group-hover:w-full transition-all duration-300 absolute"></hr>
-                    </Link>
+                    </ReactLink>
                 })}
             </nav>
-            <nav className={`flex flex-row space-x-4 align-middle ${navbar ? 'max-md:block' : 'max-md:hidden'}`}>
-                <a target={"_blank"} href="https://github.com/JJayJohnny" className="inline-block align-bottom" onClick={() => setNavbar(!navbar)}><IoLogoGithub size={28}/></a>
+            <nav className={`flex flex-row space-x-4 ${navbar ? 'max-md:block' : 'max-md:hidden'}`}>
+                <button className="align-bottom"><a target={"_blank"} href="https://github.com/JJayJohnny" rel="noopener noreferrer" onClick={() => setNavbar(!navbar)}><IoLogoGithub size={32}/></a></button>
                 {currentTheme === "dark" ? (
                     <button onClick={() => setTheme('light')} className="bg-slate-100 p-2 rounded-xl">
                         <RiSunLine color="black"/>
