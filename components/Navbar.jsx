@@ -4,6 +4,14 @@ import {Link as ReactLink} from "react-scroll/modules"
 import {useTheme} from "next-themes"
 import {RiMoonFill, RiSunLine} from "react-icons/ri"
 import {IoMdMenu, IoMdClose, IoLogoGithub} from "react-icons/io"
+import {motion} from 'framer-motion'
+
+const variants = {
+    open: { opacity: 1, y: 0 },
+    closed: { opacity: 0, y: "-100%" },
+}
+
+const phoneWidthBreakpoint = 768 //like in tailwind css md:
 
 const NAV_ITEMS = [
     {
@@ -21,12 +29,22 @@ const NAV_ITEMS = [
 ]
 
 const Navbar = () => {
-    const [navbar, setNavbar] = useState(false)
+    const [navbar, setNavbar] = useState(true)
     const [mounted, setMounted] = useState(false)
     const {systemTheme, theme, setTheme} = useTheme()
     const currentTheme = theme === "system" ? systemTheme : theme
+    const [width, setWidth] = useState(0)
 
     useEffect(() => {setMounted(true)}, [])
+
+    useEffect(()=> {
+        const handleResize = () => {
+            setWidth(window.innerWidth)
+        }
+        window.addEventListener('resize', handleResize)
+
+        handleResize()
+     }, [])
     
     if(!mounted){
         return null
@@ -37,20 +55,20 @@ const Navbar = () => {
             <div className='flex flex-row justify-between max-md:w-full'>
                 <h2>Logo</h2>
                 <div className="md:hidden">
-                    <button onClick={() => setNavbar(!navbar)}>
+                    <motion.button onClick={() => setNavbar(!navbar)} whileTap={{ rotate: 90 }} whileHover={{ scale: 1.2 }}>
                         {navbar ? <IoMdClose/> : <IoMdMenu/>}
-                    </button>
+                    </motion.button>
                 </div>
             </div>
-            <nav className={`flex space-x-6 ${navbar ? 'max-md:block' : 'max-md:hidden'}`}>
+            <motion.nav className={`flex space-x-6 ${navbar ? 'max-md:block' : 'max-md:hidden'}`} animate={navbar || width > phoneWidthBreakpoint ? "open" : "closed"} variants={variants} initial="closed">
                 {NAV_ITEMS.map((item, idx) => {
                     return <ReactLink key={idx} to={item.page} activeClass="active" spy={true} smooth={true} offset={-150} duration={500} className="cursor-pointer group relative" onClick={() => setNavbar(!navbar)}>
                         {item.label}
                         <hr className="mx-auto left-0 w-0 h-0.5 bg-green-600 border-0 group-hover:w-full transition-all duration-300 absolute"></hr>
                     </ReactLink>
                 })}
-            </nav>
-            <nav className={`flex flex-row space-x-4 ${navbar ? 'max-md:block' : 'max-md:hidden'}`}>
+            </motion.nav>
+            <motion.nav className={`flex flex-row space-x-4 ${navbar ? 'max-md:block' : 'max-md:hidden'}`} animate={navbar || width > phoneWidthBreakpoint ? "open" : "closed"} variants={variants} initial="closed">
                 <button className="align-bottom"><a target={"_blank"} href="https://github.com/JJayJohnny" rel="noopener noreferrer" onClick={() => setNavbar(!navbar)}><IoLogoGithub size={32}/></a></button>
                 {currentTheme === "dark" ? (
                     <button onClick={() => setTheme('light')} className="bg-slate-100 p-2 rounded-xl">
@@ -61,7 +79,7 @@ const Navbar = () => {
                         <RiMoonFill/>
                     </button>
                 )}
-            </nav>
+            </motion.nav>
         </header>
     )
 }
