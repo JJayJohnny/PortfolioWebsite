@@ -12,9 +12,11 @@ const ProjectCard = ({project}) => {
     return(
         <motion.div className="flex flex-row justify-between md:w-1/2 w-4/5 mx-auto space-x-5 shadow-xl rounded-xl bg-gray-200 dark:bg-gray-800" initial={{x: "-100%"}} whileInView={{x: 0, transition:{duration: 0.5, delay: 0.5}}} viewport={{once: true}} whileHover={{scale: 1.05}}>
             <div className="w-1/2"><Image src={project.imagePath} width={300} height={300} className="rounded-l-xl"/></div>
-            <div className="justify-start text-start w-1/2">
+            <div className="text-start w-1/2 flex flex-col justify-between py-5">
+                <div>
                 <h3 className="font-semibold text-xl">{project.title}</h3>
                 <p>{project.description}</p>
+                </div>
                 <div className="flex flex-row justify-start space-x-2">
                     {project.github ? <a href={project.github} target="_blank"><DiGithubBadge size={28}/></a> : null }
                     {project.website ? <a href={project.website} target="_blank"><CgWebsite size={28}/></a> : null }
