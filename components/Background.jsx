@@ -4,11 +4,11 @@ import { useRef, useLayoutEffect } from "react";
 import { useTransform, useScroll, useTime } from "framer-motion";
 import { degreesToRadians, progress, mix } from "popmotion";
 
-const color = "#AAAAAA";
+const color = "#999999";
 
 const Icosahedron = () => (
   <mesh rotation-x={0.35}>
-    <icosahedronGeometry args={[2, 0]} />
+    <icosahedronGeometry args={[1, 0]} />
     <meshBasicMaterial wireframe color={color} />
   </mesh>
 );

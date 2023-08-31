@@ -10,7 +10,7 @@ import { motion } from 'framer-motion'
 const ProjectCard = ({project, idx}) => {
     const {data: session} = useSession()
     return(
-        <motion.div className="flex flex-row justify-between lg:w-1/2 w-4/5 mx-auto space-x-5 shadow-xl rounded-xl bg-gray-200 dark:bg-gray-800" 
+        <motion.div className="flex flex-row justify-between lg:w-1/2 w-4/5 mx-auto space-x-5 shadow-xl rounded-xl bg-gray-200/60 dark:bg-gray-800/60" 
         initial={{x: idx%2 == 0 ? "-100%" : "100%", opacity: 0}} 
         whileInView={{x: 0, opacity: 1,
             transition:{duration: 0.5, delay: 0.5}
