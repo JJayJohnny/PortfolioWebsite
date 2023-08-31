@@ -21,7 +21,7 @@ export default async function Projects() {
                     My projects
                     <hr className="w-20 h-2 mx-auto my-8 bg-green-600 border-0 rounded"></hr>        
                 </h1>
-                <div className="flex flex-col space-y-5">
+                <div className="flex flex-col space-y-5 overflow-hidden">
                     {projects.map((p, idx) => (
                         <ProjectCard 
                         project={p}
