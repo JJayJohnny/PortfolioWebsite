@@ -5,6 +5,7 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import { ThemeProvider } from 'next-themes'
 import { SessionProvider } from 'next-auth/react'
+import Background from '@/components/Background'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -20,6 +21,7 @@ export default function RootLayout({ children }) {
         <SessionProvider>
           <ThemeProvider enableSystem={true} attribute='class' defaultTheme='system'>
             <Navbar/>
+            <Background/>
             {children}
             <Footer/>
           </ThemeProvider>

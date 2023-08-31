@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import Bio from '@/components/Bio'
 import About from '@/components/About'
 import Projects from '@/components/Projects'
