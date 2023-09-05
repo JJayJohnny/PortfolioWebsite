@@ -5,6 +5,7 @@ import {useTheme} from "next-themes"
 import {IoMdMenu, IoMdClose, IoLogoGithub} from "react-icons/io"
 import {motion} from 'framer-motion'
 import ThemeSwitcher from "./ThemeSwitcher"
+import Logo from "./Logo"
 
 const variants = {
     open: { opacity: 1, y: 0 },
@@ -53,9 +54,9 @@ const Navbar = () => {
     return (
         <header className={`w-full px-32 py-10 font-medium flex max-md:flex-col max-md:space-y-6 flex-row items-center justify-between shadow fixed z-50 top-0 ${currentTheme === 'dark' ? 'bg-black' : 'bg-white'}`}>
             <div className='flex flex-row justify-between max-md:w-full'>
-                <h2>Logo</h2>
+                <Logo/>
                 <div className="md:hidden">
-                    <motion.button onClick={() => setNavbar(!navbar)} whileTap={{ rotate: 90 }} whileHover={{ scale: 1.2 }}>
+                    <motion.button className="align-bottom" onClick={() => setNavbar(!navbar)} whileTap={{ rotate: 90 }} whileHover={{ scale: 1.2 }}>
                         {navbar ? <IoMdClose/> : <IoMdMenu/>}
                     </motion.button>
                 </div>
