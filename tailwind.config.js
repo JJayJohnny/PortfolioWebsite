@@ -24,6 +24,10 @@ module.exports = {
             transform: "translateY(0)"
           }
         }
+      },
+      fontFamily: {
+        inter: ["var(--font-inter)"],
+        sacramento: ["var(--font-sacramento)"]
       }
     },
   },
