@@ -1,23 +1,17 @@
 "use client"
 import { Canvas, useThree, useFrame } from "@react-three/fiber";
+import { Bloom, EffectComposer, Noise } from "@react-three/postprocessing"
 import { useRef, useLayoutEffect } from "react";
 import { useTransform, useScroll, useTime } from "framer-motion";
 import { degreesToRadians, progress, mix } from "popmotion";
 
-const color = "#999999";
-
-const Icosahedron = () => (
-  <mesh rotation-x={0.35}>
-    <icosahedronGeometry args={[1, 0]} />
-    <meshBasicMaterial wireframe color={color} />
-  </mesh>
-);
+const starColor = "#AAAAAA";
 
 const Star = ({ p }) => {
   const ref = useRef(null);
 
   useLayoutEffect(() => {
-    const distance = mix(2, 10, Math.random());
+    const distance = mix(1, 15, Math.random());
     const yAngle = mix(
       degreesToRadians(80),
       degreesToRadians(100),
@@ -29,13 +23,13 @@ const Star = ({ p }) => {
 
   return (
     <mesh rotation-x={0.35} ref={ref}>
-      <boxGeometry args={[0.05, 0.05, 0.05]} />
-      <meshBasicMaterial wireframe color={color} />
+      <icosahedronGeometry args={[0.03, 2, 0.03]} />
+      <meshStandardMaterial color={starColor} emissive={starColor}/>
     </mesh>
   );
 };
 
-function Scene({ numStars = 100 }) {
+function Scene({ numStars = 150 }) {
   const gl = useThree((state) => state.gl);
   const { scrollYProgress } = useScroll();
   const yAngle = useTransform(
@@ -56,7 +50,7 @@ function Scene({ numStars = 100 }) {
     camera.lookAt(0, 0, 0);
   });
 
-  useLayoutEffect(() => gl.setPixelRatio(0.3));
+  useLayoutEffect(() => gl.setPixelRatio(0.2));
 
   const stars = [];
   for (let i = 0; i < numStars; i++) {
@@ -65,7 +59,6 @@ function Scene({ numStars = 100 }) {
 
   return (
     <>
-      <Icosahedron />
       {stars}
     </>
   );
@@ -74,8 +67,12 @@ function Scene({ numStars = 100 }) {
 export default function Background() {
   return (
     <div className=" fixed top-0 left-0 right-0 bottom-0 -z-50 backdrop-blur">
-      <Canvas gl={{ antialias: false }} >
+      <Canvas gl={{ antialias: false }}>
         <Scene />
+        <EffectComposer>
+          <Bloom luminanceThreshold={0} luminanceSmoothing={0.9} height={300}/>
+          <Noise opacity={0.02} />
+        </EffectComposer>
       </Canvas>
     </div>
   );
