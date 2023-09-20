@@ -3,7 +3,7 @@ const next = require("next");
 
 const port = 3000;
 const hostname = "localhost"
-const dev = process.env.NODE_ENV !== "production"; //dodac !
+const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev, hostname, port });
 const handle = app.getRequestHandler();
 
