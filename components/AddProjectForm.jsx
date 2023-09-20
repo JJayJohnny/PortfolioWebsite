@@ -24,7 +24,7 @@ const AddProjectForm = () => {
             data.set('image', image)
             data.set('github', github)
             data.set('website', website)
-            const res = await fetch('http://localhost:3000/api/projects', {
+            const res = await fetch(process.env.NEXT_PUBLIC_API_URL + '/projects', {
                 method: "POST",
                 body: data
             })

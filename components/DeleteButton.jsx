@@ -14,7 +14,7 @@ const DeleteButton = ({id}) => {
             return
         }
 
-        const res = await fetch(`http://localhost:3000/api/projects?id=${id}`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/projects?id=${id}`, {
             method: "DELETE"
         })
         console.log(res)
