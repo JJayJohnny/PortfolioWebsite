@@ -26,6 +26,7 @@ export default async function Projects() {
                         <ProjectCard 
                         project={p}
                         idx={idx}
+                        key={idx}
                         />
                     ))}      
     

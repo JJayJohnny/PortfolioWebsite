@@ -54,7 +54,7 @@ function Scene({ numStars = 150 }) {
 
   const stars = [];
   for (let i = 0; i < numStars; i++) {
-    stars.push(<Star p={progress(0, numStars, i)} />);
+    stars.push(<Star p={progress(0, numStars, i)} key={i}/>);
   }
 
   return (

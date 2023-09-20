@@ -17,7 +17,7 @@ const ProjectCard = ({project, idx}) => {
         }} 
         viewport={{once: true}} 
         whileHover={{scale: 1.05}}>
-            <div className="w-1/2"><Image src={project.imagePath} width={300} height={300} className="rounded-l-xl"/></div>
+            <div className="w-1/2"><Image src={project.imagePath} width={300} height={300} className="rounded-l-xl" alt={`Image of ${project.title}`}/></div>
             <div className="text-start w-1/2 flex flex-col justify-between py-5">
                 <div>
                 <h3 className="font-semibold text-xl">{project.title}</h3>

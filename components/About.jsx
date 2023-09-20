@@ -23,7 +23,7 @@ const About = () => {
                     <div className="flex flex-wrap flex-row justify-center lg:justify-start">
                         {SKILLS.map((skill, idx) => {
                             return (
-                                <div className="px-3 py-2 mt-2 mr-2 bg-green-500 rounded font-semibold">{skill}</div>
+                                <div className="px-3 py-2 mt-2 mr-2 bg-green-500 rounded font-semibold" key={idx}>{skill}</div>
                             )
                         })}
                     </div>
