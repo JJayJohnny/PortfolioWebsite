@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import ArrowButtton from "./ArrowButton";
 
-const SKILLS = ['JavaScript', 'Python', 'C++', 'HTML', 'CSS', 'Node.js', 'Git', 'Next.js', 'Matlab', 'Numpy', 'Windows', 'Linux']
+const SKILLS = ['JavaScript', 'Node.js', 'Python', 'C++', 'Express.js', 'Next.js', 'React', 'HTML', 'CSS', 'TailwindCSS', 'Git', 'Jira', 'Matlab', 'Numpy', 'MongoDB', 'SQL']
 
 const About = () => {
     return(
@@ -13,9 +13,16 @@ const About = () => {
             </h1>
             <div className="flex flex-col justify-between lg:space-x-10 lg:flex-row lg:px-60 px-10 max-lg:space-y-10">
                 <div className="lg:w-3/5 justify-center lg:text-justify text-center">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec ipsum sapien. Sed neque eros, iaculis eget auctor quis, pellentesque vel arcu. Phasellus semper ex non egestas imperdiet. Etiam iaculis, augue a tristique ornare, nisi orci facilisis nisi, sit amet varius ipsum dolor non sem. Quisque iaculis, purus in eleifend ornare, velit odio malesuada est, ac fringilla justo ipsum vel tellus. Praesent mauris elit, cursus quis ultrices vel, rutrum vitae nisi. Nulla varius nibh sed euismod ultrices. Duis id aliquam lacus, vel molestie velit. Praesent sapien turpis, molestie non lobortis eu, interdum eu elit.
+                    <p>
+                        I've always been interested in computers for as long as I can remember. It all started with playing games and later evolved into an interest in how they actually work, what new things are being developed and a desire to program them myself.
                     </p>
-                    <p>Donec interdum at magna in mollis. Nam vitae feugiat tellus, ac maximus est. Pellentesque eget maximus magna. Duis mattis turpis ac libero aliquet, porta rhoncus nisi tincidunt. Integer eget elementum odio. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent at urna at sapien auctor luctus sed in ex. Donec pretium facilisis massa sed malesuada. Nulla et varius felis, sed tempus neque. Duis scelerisque dolor a erat porta condimentum. Ut in facilisis lectus. Etiam ut dui elementum, facilisis massa at, mollis ligula. Mauris auctor sem nec sem placerat, sed elementum purus luctus. Donec quis consectetur tortor. Etiam bibendum elit odio, et eleifend ex cursus ac.
+                    <br/>
+                    <p>
+                        That's why I've decided to study <b className=" text-green-600">computer science</b> at <b className=" text-green-600">Gdańsk University of Technology</b> where I live. I'm currently on the <b className="text-green-600">5th semester</b>, getting really good grades (GPA 4.43🤓), and I'm extremely pleased with my choice of degree. I feel that I have learned a lot of things that will be valuable in my future professional life and have also developed important soft skills.
+                    </p>
+                    <br/>
+                    <p>
+                        I wish to gain my first experience in the IT sector, learn the process of software development and work as part of a team on a big project.
                     </p>
                 </div>
                 <div className="lg:w-2/5">

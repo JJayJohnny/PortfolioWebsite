@@ -1,7 +1,7 @@
 "use client"
 import { Canvas, useThree, useFrame } from "@react-three/fiber";
 import { Bloom, EffectComposer, Noise } from "@react-three/postprocessing"
-import { useRef, useLayoutEffect } from "react";
+import { useRef, useLayoutEffect} from "react";
 import { useTransform, useScroll, useTime } from "framer-motion";
 import { degreesToRadians, progress, mix } from "popmotion";
 
@@ -49,8 +49,6 @@ function Scene({ numStars = 150 }) {
     camera.updateProjectionMatrix();
     camera.lookAt(0, 0, 0);
   });
-
-  useLayoutEffect(() => gl.setPixelRatio(0.2));
 
   const stars = [];
   for (let i = 0; i < numStars; i++) {
