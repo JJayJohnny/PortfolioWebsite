@@ -26,6 +26,10 @@ const NAV_ITEMS = [
     {
         label: "Projects",
         page: "projects"
+    },
+    {
+        label: "Contact",
+        page: "contact"
     }
 ]
 
@@ -52,8 +56,8 @@ const Navbar = () => {
     }
 
     return (
-        <header className={`w-full px-32 py-10 font-medium flex max-md:flex-col max-md:space-y-6 flex-row items-center justify-between shadow fixed z-50 top-0 ${currentTheme === 'dark' ? 'bg-black' : 'bg-white'}`}>
-            <div className='flex flex-row justify-between max-md:w-full'>
+        <header className={`w-full md:px-28 py-10 font-medium flex max-md:flex-col max-md:space-y-6 flex-row items-center justify-between shadow fixed z-50 top-0 ${currentTheme === 'dark' ? 'bg-black' : 'bg-white'}`}>
+            <div className='flex flex-row justify-between max-md:w-full max-md:px-32'>
                 <Logo/>
                 <div className="md:hidden">
                     <motion.button className="align-bottom" onClick={() => setNavbar(!navbar)} whileTap={{ rotate: 90 }} whileHover={{ scale: 1.2 }}>
