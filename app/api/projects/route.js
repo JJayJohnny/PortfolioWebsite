@@ -31,7 +31,7 @@ export async function POST(request){
 
 export async function GET(){
     await connectMogoDB()
-    const projects = await Project.find()
+    const projects = await Project.find().sort({year: -1})
     return NextResponse.json({projects})
 }
 
