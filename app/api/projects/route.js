@@ -14,6 +14,7 @@ export async function POST(request){
     const data = await request.formData()
     const title = data.get('title')
     const description = data.get('description')
+    const year = data.get('year')
     const image = data.get('image')
     const github = data.get('github')
     const website = data.get('website')
@@ -24,7 +25,7 @@ export async function POST(request){
     await writeFile('public'+imagePath, buffer)
 
     await connectMogoDB()
-    await Project.create({title, description, imagePath, github, website})
+    await Project.create({title, description, year, imagePath, github, website})
     return NextResponse.json({message: "Project Added"}, {status: 201})
 }
 
