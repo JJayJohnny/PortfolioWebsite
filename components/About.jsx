@@ -13,11 +13,11 @@ const About = () => {
             <div className="flex flex-col justify-between lg:space-x-10 lg:flex-row lg:px-60 px-10 max-lg:space-y-10">
                 <div className="lg:w-3/5 justify-center lg:text-justify text-center">
                     <p>
-                        I've always been interested in computers for as long as I can remember. It all started with playing games and later evolved into an interest in how they actually work, what new things are being developed and a desire to program them myself.
+                        I&apos;ve always been interested in computers for as long as I can remember. It all started with playing games and later evolved into an interest in how they actually work, what new things are being developed and a desire to program them myself.
                     </p>
                     <br/>
                     <p>
-                        That's why I've decided to study <b className=" text-green-600">computer science</b> at <b className=" text-green-600">Gdańsk University of Technology</b> where I live. I'm currently on the <b className="text-green-600">5th semester</b>, getting really good grades (GPA 4.43🤓), and I'm extremely pleased with my choice of degree. I feel that I have learned a lot of things that will be valuable in my future professional life and have also developed important soft skills.
+                        That&apos;s why I&apos;ve decided to study <b className=" text-green-600">computer science</b> at <b className=" text-green-600">Gdańsk University of Technology</b> where I live. I&apos;m currently on the <b className="text-green-600">5th semester</b>, getting really good grades (GPA 4.43🤓), and I&apos;m extremely pleased with my choice of degree. I feel that I have learned a lot of things that will be valuable in my future professional life and have also developed important soft skills.
                     </p>
                     <br/>
                     <p>
