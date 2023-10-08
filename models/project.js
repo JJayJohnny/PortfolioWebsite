@@ -13,7 +13,7 @@ const projectSchema = new Schema({
         type: Number,
         required: true
     },
-    imagePath: {
+    imageName: {
         type: String
     },
     github: {

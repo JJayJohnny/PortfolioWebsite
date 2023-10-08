@@ -21,11 +21,12 @@ export async function POST(request){
 
     const bytes = await image.arrayBuffer()
     const buffer = Buffer.from(bytes)
-    const imagePath = '/projectImages/' + image.name
-    await writeFile('public'+imagePath, buffer)
+    const imageName = image.name
+    const imagePath = process.env.UPLOADS_PATH + imageName
+    await writeFile(imagePath, buffer)
 
     await connectMogoDB()
-    await Project.create({title, description, year, imagePath, github, website})
+    await Project.create({title, description, year, imageName, github, website})
     return NextResponse.json({message: "Project Added"}, {status: 201})
 }
 
@@ -45,7 +46,7 @@ export async function DELETE(request){
     const project = await Project.findById(id)
     if(project){
         try{
-        await unlink('public'+project.imagePath)
+        await unlink(process.env.UPLOADS_PATH+project.imageName)
         }catch(error){
             console.log("Error deleting image: "+ error)
         }
