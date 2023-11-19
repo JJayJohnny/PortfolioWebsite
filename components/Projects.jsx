@@ -3,7 +3,7 @@ import ProjectCard from "./ProjectCard";
 
 const getProjects = async () => {
         //this should be in try catch but then cache: no-store doesnt work
-        const res = await fetch(process.env.NEXT_PUBLIC_APi_URL + '/projects', {
+        const res = await fetch(process.env.NEXT_PUBLIC_API_URL + '/projects', {
             cache: "no-store"
         })
         if(!res.ok){

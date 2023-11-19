@@ -4,6 +4,7 @@ import { NextResponse, NextRequest } from "next/server"
 import {writeFile, unlink} from 'fs/promises'
 import { getServerSession } from "next-auth/next"
 import { authOptions } from "@/app/api/auth/[...nextauth]/route.js"
+import path from 'path'
 
 export async function POST(request){
     const session = await getServerSession(authOptions)
@@ -22,7 +23,7 @@ export async function POST(request){
     const bytes = await image.arrayBuffer()
     const buffer = Buffer.from(bytes)
     const imageName = image.name
-    const imagePath = process.env.UPLOADS_PATH + imageName
+    const imagePath = path.join(process.cwd(), process.env.UPLOADS_PATH,  imageName)
     await writeFile(imagePath, buffer)
 
     await connectMogoDB()
@@ -46,7 +47,7 @@ export async function DELETE(request){
     const project = await Project.findById(id)
     if(project){
         try{
-        await unlink(process.env.UPLOADS_PATH+project.imageName)
+        await unlink(path.join(process.cwd(), process.env.UPLOADS_PATH, project.imageName))
         }catch(error){
             console.log("Error deleting image: "+ error)
         }
