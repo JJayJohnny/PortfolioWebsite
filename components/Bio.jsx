@@ -12,7 +12,7 @@ const Bio = () => {
                     <h1 className="text-4xl font-bold">Hi</h1>
                     <hr className="w-20 h-2 mx-auto my-8 bg-green-600 border-0 rounded"></hr>
                     <p>
-                        Welcome to my portfolio website! My name is <b className=" text-green-600">Jan Barczewski</b>. I&apos;m a third-year computer science student, aspiring to become a professional software developer. My main fields of interest are backend development and AI. This page serves as a business card showcasing my experience, projects, and skills.
+                        Welcome to my portfolio website! My name is <b className=" text-green-600">Jan Barczewski</b>. I&apos;m a third-year computer science student, aspiring to become a professional software developer. My main fields of interest are web development and AI. This page serves as a business card showcasing my experience, projects, and skills.
                     </p>
                 </div>
             </div>

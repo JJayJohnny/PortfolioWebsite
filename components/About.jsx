@@ -1,7 +1,7 @@
 import React from "react";
 import ArrowButtton from "./ArrowButton";
 
-const SKILLS = ['JavaScript', 'Node.js', 'Python', 'C++', 'Express.js', 'Next.js', 'React', 'HTML', 'CSS', 'TailwindCSS', 'Git', 'Jira', 'Matlab', 'Numpy', 'scikit-learn', 'MongoDB', 'SQL']
+const SKILLS = ['JavaScript', 'Node.js', 'Python', 'Express.js', 'Java', 'Spring Boot', 'C++', 'Next.js', 'React', 'HTML', 'CSS', 'TailwindCSS', 'Git', 'Jira', 'Matlab', 'Numpy', 'scikit-learn', 'MongoDB', 'SQL']
 
 const About = () => {
     return(
