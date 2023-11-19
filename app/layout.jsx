@@ -1,11 +1,9 @@
-"use client"
 import './globals.css'
 import { Inter, Sacramento } from 'next/font/google'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
-import { ThemeProvider } from 'next-themes'
-import { SessionProvider } from 'next-auth/react'
 import Background from '@/components/Background'
+import { Providers } from '@/components/Providers'
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -27,15 +25,15 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${inter.variable} ${sacramento.variable} font-inter`}>
-        <SessionProvider>
-          <ThemeProvider enableSystem={true} attribute='class' defaultTheme='system'>
+        <>
+          <Providers>
             <Navbar/>
             <Background/>
             {children}
             <Footer/>
-          </ThemeProvider>
-        </SessionProvider>
-        </body>
+          </Providers>
+        </>
+      </body>
     </html>
   )
 }
