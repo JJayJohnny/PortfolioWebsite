@@ -1,17 +1,15 @@
 import connectMogoDB from "@/libs/mongodb"
 import Project from "@/models/project"
-import { NextResponse, NextRequest } from "next/server"
-import {writeFile, unlink} from 'fs/promises'
+import { NextResponse } from "next/server"
 import { getServerSession } from "next-auth/next"
 import { authOptions } from "@/app/api/auth/[...nextauth]/route.js"
-import path from 'path'
+import { put, del } from '@vercel/blob';
 
 export async function POST(request){
     const session = await getServerSession(authOptions)
     if(!session){
         return NextResponse.json({message: "You dont have access"}, {status: 401})
     }
-    // const {title, description, image, github, website} = await request.json()
     const data = await request.formData()
     const title = data.get('title')
     const description = data.get('description')
@@ -20,11 +18,13 @@ export async function POST(request){
     const github = data.get('github')
     const website = data.get('website')
 
-    const bytes = await image.arrayBuffer()
-    const buffer = Buffer.from(bytes)
-    const imageName = image.name
-    const imagePath = path.join(process.cwd(), process.env.UPLOADS_PATH,  imageName)
-    await writeFile(imagePath, buffer)
+    let imageName = image.name
+
+    const blob = await put(`projectImages/${imageName}`, image, {
+        access: 'public'
+    })
+
+    imageName = blob.url
 
     await connectMogoDB()
     await Project.create({title, description, year, imageName, github, website})
@@ -47,7 +47,7 @@ export async function DELETE(request){
     const project = await Project.findById(id)
     if(project){
         try{
-        await unlink(path.join(process.cwd(), process.env.UPLOADS_PATH, project.imageName))
+            await del(project.imageName)
         }catch(error){
             console.log("Error deleting image: "+ error)
         }

@@ -49,7 +49,7 @@ const AddProjectForm = () => {
                     <h2 className="text-center font-bold">Add project</h2>
                     <form className="flex flex-col space-y-3" onSubmit={handleSubmit}>
                         <input type="text" placeholder="Title" className="border rounded" required onChange={(e) => setTitle(e.target.value)}/>
-                        <input type="text" placeholder="Description" className="border rounded" required onChange={(e) => setDescription(e.target.value)}/>
+                        <textarea rows="4" placeholder="Description" className="border rounded" required onChange={(e) => setDescription(e.target.value)}/>
                         <input type="number" placeholder="Year" min={1000} max={9999} className="border rounded" required onChange={(e) => setYear(e.target.value)}/>
                         <input type="file" placeholder="Photo" className="border rounded" required onChange={() => setImage(inputRef.current.files[0])} ref={inputRef} accept="image/*"/>
                         <input type="text" placeholder="Github page" className="border rounded" onChange={(e) => setGithub(e.target.value)}/>
