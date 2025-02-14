@@ -11,7 +11,7 @@ const About = () => {
                 <hr className="w-20 h-2 mx-auto my-8 bg-green-600 border-0 rounded"></hr>
             </h1>
             <div className="flex flex-col justify-between lg:space-x-10 lg:flex-row lg:px-60 px-10 max-lg:space-y-10">
-                <div className="lg:w-3/5 justify-center lg:text-justify text-center">
+                <div className="lg:w-3/5 justify-center lg:text-justify text-center dark:bg-gray-800/60 bg-gray-300/80 p-5 rounded-xl">
                     <p>
                         I&apos;ve always been interested in computers for as long as I can remember. It all started with playing games and later evolved into an interest in how they actually work, what new things are being developed and a desire to program them myself.
                     </p>

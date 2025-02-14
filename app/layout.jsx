@@ -24,7 +24,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${sacramento.variable} font-inter`}>
+      <body className={`${inter.variable} ${sacramento.variable} font-inter dark:bg-zinc-950 bg-zinc-50`}>
         <>
           <Providers>
             <Navbar/>
