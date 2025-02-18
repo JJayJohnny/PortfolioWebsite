@@ -75,7 +75,7 @@ const Navbar = () => {
             </div>
             <motion.nav className={`flex flex-row flex-wrap justify-center space-x-4 max-lg:px-5 ${navbar ? 'max-lg:flex' : 'max-lg:hidden'}`} animate={navbar || width > phoneWidthBreakpoint ? "open" : "closed"} variants={variants} initial="closed">
                 {NAV_ITEMS.map((item, idx) => {
-                    return <div><ReactLink key={idx} to={item.page} activeClass="active" spy={true} smooth={true} offset={-150} duration={500} className="cursor-pointer group relative" onClick={() => setNavbar(!navbar)}>
+                    return <div key={idx}><ReactLink to={item.page} activeClass="active" spy={true} smooth={true} offset={-150} duration={500} className="cursor-pointer group relative" onClick={() => setNavbar(!navbar)}>
                         {item.label}
                         <hr className="mx-auto left-0 w-0 h-0.5 bg-green-600 border-0 group-hover:w-full transition-all duration-300 absolute"></hr>
                     </ReactLink></div>
