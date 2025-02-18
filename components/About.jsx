@@ -35,7 +35,7 @@ const About = () => {
                     </div>
                 </div>
             </div>
-            <ArrowButtton destination={'projects'}/>
+            <ArrowButtton destination={'education'}/>
         </section>
     )
 }

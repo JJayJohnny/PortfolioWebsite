@@ -24,6 +24,10 @@ const NAV_ITEMS = [
         page: "about"
     },
     {
+        label: "Education",
+        page: "education"
+    },
+    {
         label: "Projects",
         page: "projects"
     },
