@@ -66,7 +66,7 @@ const Education = () => {
                     )
                 })}
             </div>
-            <ArrowButtton destination={'projects'}/>
+            <ArrowButtton destination={'experience'}/>
         </section>
     );
 };
