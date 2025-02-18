@@ -6,6 +6,7 @@ import { motion } from 'framer-motion'
 import Image from "next/image";
 import pgLogo from '../public/Logo_Gdansk_Tech.svg'
 import pgLogoDark from '../public/Logo_Gdansk_Tech_Dark.svg'
+import {useTheme} from "next-themes";
 
 const COURSES = [
     {
@@ -35,6 +36,8 @@ const COURSES = [
 ]
 
 const Education = () => {
+    const {systemTheme, theme} = useTheme()
+    const currentTheme = theme === "system" ? systemTheme : theme
     return (
         <section id="education" className="my-60">
             <h1 className="text-center text-4xl font-bold">
@@ -58,8 +61,7 @@ const Education = () => {
                                     <div><span className='underline'>GPA</span>: {course.gpa}</div>
                                 </div>
                                 <div className='w-2/6 my-auto'>
-                                    <Image src={course.img} alt={`Logo of ${course.school}`} className="dark:hidden"/>
-                                    <Image src={course.imgDark} alt={`Logo of ${course.school}`} className="hidden dark:block"/>
+                                    <Image src={currentTheme == "dark" && course.imgDark ? course.imgDark : course.img} alt={`Logo of ${course.school}`} />
                                 </div>
                             </div>
                         </motion.div>
