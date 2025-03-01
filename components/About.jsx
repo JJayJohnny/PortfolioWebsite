@@ -1,7 +1,7 @@
 import React from "react";
 import ArrowButtton from "./ArrowButton";
 
-const SKILLS = ['JavaScript', 'Node.js', 'Python', 'Express.js', 'Java', 'Spring Boot', 'C++', 'Next.js', 'React', 'HTML', 'CSS', 'TailwindCSS', 'Git', 'Jira', 'Matlab', 'Numpy', 'scikit-learn', 'MongoDB', 'SQL']
+const SKILLS = ['Java', 'Spring Boot', 'Jakarta EE', 'JavaScript', 'Node.js', 'Python', 'ASP.NET', 'Express.js', 'C++', 'Next.js', 'React', 'HTML', 'CSS', 'TailwindCSS', 'Git', 'Docker', 'Jira', 'Matlab', 'Numpy', 'scikit-learn', 'MongoDB', 'SQL', 'RaspberryPi']
 
 const About = () => {
     return(
@@ -17,11 +17,11 @@ const About = () => {
                     </p>
                     <br/>
                     <p>
-                        That&apos;s why I&apos;ve decided to study <b className=" text-green-600">computer science</b> at <b className=" text-green-600">Gdańsk University of Technology</b> where I live. I&apos;m currently on the <b className="text-green-600">5th semester</b>, getting really good grades (GPA 4.43🤓), and I&apos;m extremely pleased with my choice of degree. I feel that I have learned a lot of things that will be valuable in my future professional life and have also developed important soft skills.
+                        That's why I've decided to study <b className="text-green-600">Informatics</b> at <b className="text-green-600">Gdańsk University of Technology</b>, where I live. I've obtained an <b className="text-green-600">Engineering degree</b> with honors (GPA 4.58 🤓), and I am currently pursuing a <b className="text-green-600">Master of Engineering degree</b> in the same field. My specialty of choice is <b className="text-green-600">High-Performance Computing and Computational Intelligence</b>. Overall, I feel that these studies have given me a solid foundation for future work in software development, regardless of the career path I choose. I've learned many things that will be valuable in my professional life and have also developed important soft skills.
                     </p>
                     <br/>
                     <p>
-                        I wish to gain my first experience in the IT sector, learn the process of software development and work as part of a team on a big project.
+                        I've gained my first experience in the IT sector during my internship at <b className="text-green-600">Intel</b>, where I worked as a <b className="text-green-600">Graphics Software Development Intern</b> in the PreSi CI Team. I've learned a lot about test automation, CI/CD processes, industry-standard tools, and the importance of teamwork. I've also had the opportunity to work on a real project with people from different countries, which was a great experience.
                     </p>
                 </div>
                 <div className="lg:w-2/5">

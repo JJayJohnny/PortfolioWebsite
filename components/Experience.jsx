@@ -4,6 +4,7 @@ import ArrowButtton from './ArrowButton';
 import intelLogo from '../public/Logo_Intel.png';
 import wakacjeLogo from '../public/Logo_Wakacje.png';
 import Image from 'next/image';
+import { motion } from 'framer-motion'
 
 const JOBS = [
     {
@@ -32,7 +33,7 @@ const Experience = () => {
             <div className="flex flex-col space-y-5 overflow-hidden py-3">
                 {JOBS.map((job, idx) => {
                     return (
-                        <div className="mx-auto rounded-xl bg-gray-300/80 dark:bg-gray-800/60 w-4/5 lg:w-1/2 p-5" key={idx}>
+                        <motion.div className="mx-auto rounded-xl bg-gray-300/80 dark:bg-gray-800/60 w-4/5 lg:w-1/2 p-5" key={idx} whileHover={{scale: 1.05}}>
                             <div className="flex sm:flex-row flex-col mb-3">
                                 <h3 className="font-semibold text-xl">{job.company}</h3>
                                 <h3 className="font-semibold text-xl sm:ml-auto text-purple-500">{job.duration}</h3>
@@ -46,7 +47,7 @@ const Experience = () => {
                                     <Image src={job.img} alt={job.company}/>
                                 </div>
                             </div>
-                        </div>
+                        </motion.div>
                     )
                 })}
             </div>
