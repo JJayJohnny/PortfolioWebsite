@@ -1,13 +1,14 @@
 "use client"
 import { Canvas, useThree, useFrame } from "@react-three/fiber";
-import { Bloom, EffectComposer, Noise } from "@react-three/postprocessing"
 import { useRef, useLayoutEffect} from "react";
 import { useTransform, useScroll, useTime } from "framer-motion";
 import { degreesToRadians, progress, mix } from "popmotion";
+import {useTheme} from "next-themes";
 
-const starColor = "#AAAAAA";
+const starColorDark = "#AAAAAA";
+const starColorLight = "#222222";
 
-const Star = ({ p }) => {
+const Star = ({ p, color }) => {
   const ref = useRef(null);
 
   useLayoutEffect(() => {
@@ -21,15 +22,20 @@ const Star = ({ p }) => {
     ref.current.position.setFromSphericalCoords(distance, yAngle, xAngle);
   });
 
+  //random number between 0.01 and 0.05
+  const size = Math.random() * (0.05 - 0.01) + 0.01;
+
+  const emissiveIntensity = Math.random() * 5;
+
   return (
     <mesh rotation-x={0.35} ref={ref}>
-      <icosahedronGeometry args={[0.03, 2, 0.03]} />
-      <meshStandardMaterial color={starColor} emissive={starColor}/>
+      <icosahedronGeometry args={[size, 1]} />
+      <meshStandardMaterial color={color} emissive={color} emissiveIntensity={emissiveIntensity}/>
     </mesh>
   );
 };
 
-function Scene({ numStars = 150 }) {
+function Scene({ numStars = 200 }) {
   const gl = useThree((state) => state.gl);
   const { scrollYProgress } = useScroll();
   const yAngle = useTransform(
@@ -39,6 +45,9 @@ function Scene({ numStars = 150 }) {
   );
   const distance = useTransform(scrollYProgress, [0, 1], [10, 8]);
   const time = useTime();
+
+  const {systemTheme, theme} = useTheme()
+  const currentTheme = theme === "system" ? systemTheme : theme
 
   useFrame(({ camera }) => {
     camera.position.setFromSphericalCoords(
@@ -52,7 +61,7 @@ function Scene({ numStars = 150 }) {
 
   const stars = [];
   for (let i = 0; i < numStars; i++) {
-    stars.push(<Star p={progress(0, numStars, i)} key={i}/>);
+    stars.push(<Star p={progress(0, numStars, i)} color = {currentTheme == "dark" ? starColorDark : starColorLight} key={i}/>);
   }
 
   return (
@@ -67,10 +76,6 @@ export default function Background() {
     <div className=" fixed top-0 left-0 right-0 bottom-0 -z-50 backdrop-blur">
       <Canvas gl={{ antialias: false }}>
         <Scene />
-        <EffectComposer>
-          <Bloom luminanceThreshold={0} luminanceSmoothing={0.9} height={300}/>
-          <Noise opacity={0.02} />
-        </EffectComposer>
       </Canvas>
     </div>
   );
