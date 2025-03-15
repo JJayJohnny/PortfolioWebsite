@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 import { useRouter } from "next/navigation";
 
@@ -9,7 +10,7 @@ const Logo = () => {
     }
     
     return(
-        <div onClick={home} className="font-sacramento text-3xl font-bold neon dark:neonDark hover:cursor-pointer">
+        <div onClick={home} className="font-sacramento text-3xl font-bold text-black dark:text-white hover:cursor-pointer dark:neon neonLight">
             JJayJohnny
         </div>
     )
